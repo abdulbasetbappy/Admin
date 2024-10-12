@@ -1,11 +1,11 @@
 <script setup lang="ts">
 useHead({
-  title: 'Inventory'
+  title: 'Brands'
 })
 </script>
 
 <template>
   <div>
-    <layout-title-back title="Inventory" />
+    <layout-title-back title="All Brands" />
   </div>
 </template>

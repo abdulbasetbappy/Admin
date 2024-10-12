@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup >
 import { TwToggle, TwFeather } from "vue3-tailwind";
 const cookieDark = useCookie('dark-mode')
 const isDark = useDark({

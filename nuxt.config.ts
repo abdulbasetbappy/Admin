@@ -1,31 +1,51 @@
+import Material from '@primevue/themes/material';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
-  css: ["~/assets/css/main.css"],
+
+  css: ["~/assets/css/main.css",],
+
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+
   typescript: {
     shim: false,
     strict: false,
   },
+
   runtimeConfig: {
     apiSecret: "",
     public: {
       apiBase: "/api",
     },
   },
+
   modules: [
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "@vite-pwa/nuxt",
     "@vueuse/nuxt",
+    '@primevue/nuxt-module',
+    '@nuxt/icon',
   ],
+
+  primevue: {
+    options: {
+
+      theme: {
+        preset: Material,
+        ripple: true,
+      }
+    }
+  },
+
   pwa: {
     registerType: "autoUpdate",
     manifest: {
@@ -71,4 +91,6 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+
+  compatibilityDate: "2024-10-11",
 });

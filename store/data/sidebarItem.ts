@@ -1,12 +1,5 @@
 export default [
   {
-    isTitle: true,
-    name: "Menu",
-    url: "",
-    icon: "",
-    submenu: [],
-  },
-  {
     isTitle: false,
     name: "Dashboard",
     url: "/",
@@ -39,45 +32,25 @@ export default [
     isTitle: false,
     name: "Categories",
     key: "Categories",
+    url: "/Categories",
     icon: "box",
-    submenu: [
-      {
-        isTitle: false,
-        name: "Details",
-        url: "/Categories",
-        icon: "chevron-right",
-        submenu: [],
-      },
-      {
-        isTitle: false,
-        name: "Create",
-        url: "/Categories/Create",
-        icon: "chevron-right",
-        submenu: [],
-      },
-    ],
+    submenu: [],
+  },
+  {
+    isTitle: false,
+    name: "Brands",
+    key: "Brands",
+    url: "/Brands",
+    icon: "box",
+    submenu: [],
   },
   {
     isTitle: false,
     name: "Users",
     key: "Users",
+    url: "/Users",
     icon: "box",
-    submenu: [
-      {
-        isTitle: false,
-        name: "Details",
-        url: "/Users",
-        icon: "chevron-right",
-        submenu: [],
-      },
-      {
-        isTitle: false,
-        name: "Create",
-        url: "/Users/Create",
-        icon: "chevron-right",
-        submenu: [],
-      },
-    ],
+    submenu: [],
   },
   {
     isTitle: false,
@@ -95,29 +68,14 @@ export default [
       {
         isTitle: false,
         name: "Create",
-        url: "/Offers/Create",
-        icon: "chevron-right",
-        submenu: [],
-      },
-    ],
-  },
-  {
-    isTitle: false,
-    name: "Brands",
-    key: "Brands",
-    icon: "box",
-    submenu: [
-      {
-        isTitle: false,
-        name: "Details",
-        url: "/Brands",
+        url: "/Offers/Coupon",
         icon: "chevron-right",
         submenu: [],
       },
       {
         isTitle: false,
-        name: "Create",
-        url: "/Brands/Create",
+        name: "Coupon",
+        url: "/Offers/Coupon",
         icon: "chevron-right",
         submenu: [],
       },
@@ -175,7 +133,7 @@ export default [
       {
         isTitle: false,
         name: "Trackings",
-        url: "Shippings/Trackings",
+        url: "/Shippings/Trackings",
         icon: "chevron-right",
         submenu: [],
       },

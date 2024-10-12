@@ -48,7 +48,7 @@ const logout = () => {
             <button>
               <img
                 class="w-10 h-10 rounded-full border border-[#1d152a7a]"
-                src="/images/profile.jpeg"
+                src="/images/profile.jpg"
                 alt=""
               />
             </button>

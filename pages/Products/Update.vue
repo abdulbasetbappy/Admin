@@ -1,14 +1,14 @@
 <script setup>
 useHead({
-  title: 'Product Create'
+  title: 'Product Update'
 })
 </script>
 
 <template>
   <div>
-    <layout-title-back title="Create Products" />
+    <layout-title-back title="Update Products" />
     <div class="mt-4 p-2">
-      <product-create-form/>
+      <product-update-form/>
     </div>
   </div>
 </template>
