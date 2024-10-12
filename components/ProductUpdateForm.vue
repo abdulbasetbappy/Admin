@@ -9,9 +9,6 @@ import Editor from 'primevue/editor';
 const formData = ref({})
 const value = ref(null);
 const editor = ref('');
-
-//Brand & Category
-const selectedCountry = ref();
 const countries = ref([
     { name: 'Australia', code: 'AU' },
     { name: 'Brazil', code: 'BR' },
@@ -112,11 +109,11 @@ const formatSize = (bytes) => {
 
     return `${formattedSize} ${sizes[i]}`;
 };
-const isToggled = ref(true) // Initial state of the toggle
+const isToggled = ref(true);
 
 // Watcher to track changes in the toggle's value
 watch(isToggled, (newValue) => {
-    console.log('Toggle value:', newValue) // Logs true or false when the toggle is switched
+    console.log('Toggle value:', newValue) 
 })
 
 </script>

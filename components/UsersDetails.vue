@@ -111,7 +111,6 @@ const exportToCSV = () => {
     document.body.removeChild(link);
 };
 
-
 onMounted(() => {
     fetchProducts();
 });
@@ -121,7 +120,7 @@ const visible = ref(false);
 <template>
     <div class="container mx-auto p-4">
         <div class="flex justify-end mb-4">
-            <BrandCreateModal />
+            <user-create-model />
         </div>
 
         <div class="flex justify-between mb-2">
@@ -176,7 +175,7 @@ const visible = ref(false);
                         <td class="py-2 px-4 text-center">{{ product.status || 'Active' }}</td>
                         <td class="py-2 px-4 text-center">
                             <button class="">
-                                <BrandUpdateModal />
+                                <UserUpdateModel/>
                             </button>
                             <button @click="visible = true" class="text-red-500">
                                 <Icon name="material-symbols:delete-outline-rounded" class="w-6 h-6" />

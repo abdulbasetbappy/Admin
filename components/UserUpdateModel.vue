@@ -51,45 +51,55 @@ const submitForm = () => {
         <!-- Trigger Button for Dialog -->
         <button @click="isDialogVisible = true" class="text-blue-500 hover:underline mr-2">
             <Icon name="material-symbols:edit-square-outline-rounded" class="w-6 h-6" />        </button>
+        <!-- PrimeVue Dialog Component -->
+        <Dialog :visible = "isDialogVisible" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" @update:visible="isDialogVisible = $event"
+            header="Update User" :modal="true" :closable="true" :style="{ width: '50vw' }">
 
-            <Dialog :visible="isDialogVisible" @update:visible="isDialogVisible = $event" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" 
-            header="Update Brand" :modal="true" :closable="true" :style="{ width: '50vw' }">
+                <form @submit.prevent="submitForm">
+                    <div class="grid grid-cols-12 gap-6">
+                        <div class="col-span-7">
+                            <!-- User Name -->
+                            <div class="flex flex-col mb-2 gap-1">
+                                <label for="brandName">User Name *</label>
+                                <input v-model="brandName" type="text" required placeholder="Enter User Name"
+                                    class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400" />
+                            </div>
+                            <!-- Small Description -->
+                            <div class="flex flex-col mt-2 gap-1">
+                                <label for="description">Enter Email</label>
+                                <input v-model="description" placeholder="Enter Email"
+                                    class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400">
+                            </div>
 
-            <form @submit.prevent="submitForm">
-                <div class="grid grid-cols-12 gap-6">
-                    <div class="col-span-7">
-                        <!-- Category Name -->
-                        <div class="flex flex-col mb-2 gap-1">
-                            <label for="brandName">Brand Name *</label>
-                            <input v-model="brandName" type="text" required placeholder="Enter Brand Name"
-                                class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded border-slate-400" />
+                            <div class="flex flex-col mt-2 gap-1">
+                                <label for="description">Enter Password</label>
+                                <input v-model="description" placeholder="Enter Your Password"
+                                    class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400">
+                            </div>
+                            <div class="flex flex-col mt-2 gap-1">
+                                <label for="description">Confirm Password</label>
+                                <input v-model="description" placeholder="Confirm Your Password"
+                                    class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400">
+                            </div>
                         </div>
-                        <!-- Small Description -->
-                        <div class="flex flex-col mt-2 gap-1">
-                            <label for="description">Small Description</label>
-                            <textarea v-model="description" placeholder="Enter Brand Description"
-                                class="h-[105px] bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded border-slate-400"></textarea>
+                        <!-- Drag and Drop Image Upload and Preview -->
+                        <div class="col-span-5 flex flex-col gap-1">
+                            <label for="imageUpload">Upload Image</label>
+                            <div class="border border-dashed border-slate-400 rounded-md flex flex-col items-center justify-center h-48 cursor-pointer hover:bg-gray-50"
+                                @dragover="preventDefault" @drop="handleDrop" @click="$refs.fileInput.click()">
+                                <Icon v-if="!imagePreview" icon="mdi:cloud-upload-outline"
+                                    class="w-12 h-12 text-slate-400" />
+                                <p v-if="!imagePreview" class="text-sm text-slate-500">Drag & Drop or Click to Upload
+                                </p>
+                                <img v-if="imagePreview" :src="imagePreview" alt="Image Preview"
+                                    class="w-full h-full object-cover rounded-md border" />
+                            </div>
+                            <input type="file" ref="fileInput" accept="image/*" @change="handleImageUpload"
+                                class="hidden" />
                         </div>
                     </div>
-                    <!-- Drag and Drop Image Upload and Preview -->
-                    <div class="col-span-5 flex flex-col gap-1">
-                        <label for="imageUpload">Upload Image</label>
-                        <div class="border border-dashed border-slate-400 rounded-md flex flex-col items-center justify-center h-48 cursor-pointer hover:bg-slate-400"
-                            @dragover="preventDefault" @drop="handleDrop" @click="$refs.fileInput.click()">
-                            <Icon v-if="!imagePreview" icon="mdi:cloud-upload-outline"
-                                class="w-12 h-12 text-slate-400" />
-                            <p v-if="!imagePreview" class="text-sm text-slate-500">Drag & Drop or Click to Upload
-                            </p>
-                            <img v-if="imagePreview" :src="imagePreview" alt="Image Preview"
-                                class="w-full h-full object-cover rounded-md border" />
-                        </div>
-                        <input type="file" ref="fileInput" accept="image/*" @change="handleImageUpload"
-                            class="hidden" />
-
-                    </div>
-                </div>
-            </form>
-
+                </form>
+            
             <template #footer>
                 <div class="w-full flex flex-row items-center justify-between">
                     <div class="flex items-center justify-center">
@@ -112,7 +122,7 @@ const submitForm = () => {
                             Submit <i class="pi pi-send"></i>
                         </button>
                     </div>
-                </div>
+                </div>  
             </template>
         </Dialog>
     </div>

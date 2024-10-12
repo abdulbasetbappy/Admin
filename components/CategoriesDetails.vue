@@ -111,17 +111,11 @@ const exportToCSV = () => {
     document.body.removeChild(link);
 };
 
-const editProduct = (product) => alert(`Edit Product ID: ${product.id}`);
-const deleteProduct = (id) => {
-    if (confirm('Are you sure you want to delete this product?')) {
-        products.value = products.value.filter(product => product.id !== id);
-        alert(`Product ID ${id} has been deleted.`);
-    }
-};
 
 onMounted(() => {
     fetchProducts();
 });
+const visible = ref(false);
 </script>
 
 <template>
@@ -184,7 +178,7 @@ onMounted(() => {
                             <button class="text-red-500 hover:underline">
                                 <CategoryUpdateModal />
                             </button>
-                            <button @click="deleteProduct(product.id)" class="text-red-500 hover:underline">
+                            <button @click="visible = true" class="text-red-500 hover:underline">
                                 <Icon name="material-symbols:delete-outline-rounded" class="w-6 h-6" />
                             </button>
                         </td>
@@ -216,6 +210,30 @@ onMounted(() => {
                 <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages"
                     class="px-3 py-1 border rounded disabled:opacity-50 border-slate-400 disabled:cursor-not-allowed">Next</button>
             </div>
+        </div>
+        <div class="card flex justify-center">
+            <Dialog @update:visible="visible = $event" :visible="visible" modal header="Delete" :style="{ width: '25rem' }">
+
+                <div class="flex items-center flex-col justify-center">
+                    <Icon name="line-md:folder-remove-twotone" class="w-32 h-32 text-red-500" />
+                    <p class="text-2xl my-4 mb-6">Are You Sure To Delete ?</p>
+                </div>
+                <div class="flex justify-between gap-2">
+                    <button 
+                        class="py-2 px-3 flex items-center gap-2 bg-slate-500 text-white rounded-md text-lg"
+                        @click="visible = false"
+                        type="button">
+                        Cancel
+                        <Icon name="material-symbols:cancel-outline-rounded" />
+                    </button>
+                    <button 
+                        class="py-2 flex items-center gap-2 px-3 bg-rose-500 text-white rounded-md text-lg"
+                        @click="visible = false"
+                        type="button">
+                        Delete <i class="pi pi-send"></i>
+                    </button>
+                </div>
+            </Dialog>
         </div>
     </div>
 </template>
