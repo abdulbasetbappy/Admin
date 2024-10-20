@@ -44,6 +44,32 @@ const submitForm = () => {
     isDialogVisible.value = false;
 };
 
+// Function to send the form data to the API
+const formData = ref({
+    name: "",
+    password: "",
+    email: '',
+    phone: '12345678978',
+    image: imageFile.value,
+})
+
+// Send Post Request to the API
+const sendPostRequest = async (formData) => {
+    try {
+        const response = await fetch("http://localhost:3030/api/users/register", {
+            method: "POST",
+            body: formData,
+        });
+        if (response.ok) {
+            console.log("User Created Successfully");
+        } else {
+            console.error("Failed to Create User");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+};
+
 </script>
 
 <template>
@@ -64,24 +90,24 @@ const submitForm = () => {
                             <!-- User Name -->
                             <div class="flex flex-col mb-2 gap-1">
                                 <label for="brandName">User Name *</label>
-                                <input v-model="brandName" type="text" required placeholder="Enter User Name"
+                                <input v-model="formData.name" type="text" required placeholder="Enter User Name"
                                     class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400" />
                             </div>
                             <!-- Small Description -->
                             <div class="flex flex-col mt-2 gap-1">
                                 <label for="description">Enter Email</label>
-                                <input v-model="description" placeholder="Enter Email"
+                                <input v-model="formData.email" placeholder="Enter Email"
                                     class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400">
                             </div>
 
                             <div class="flex flex-col mt-2 gap-1">
                                 <label for="description">Enter Password</label>
-                                <input v-model="description" placeholder="Enter Your Password"
+                                <input v-model="formData.password" placeholder="Enter Your Password"
                                     class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400">
                             </div>
                             <div class="flex flex-col mt-2 gap-1">
                                 <label for="description">Confirm Password</label>
-                                <input v-model="description" placeholder="Confirm Your Password"
+                                <input v-model="formData.password" placeholder="Confirm Your Password"
                                     class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-1 rounded border-slate-400">
                             </div>
                         </div>
@@ -120,7 +146,7 @@ const submitForm = () => {
                             Cancel
                             <Icon name="material-symbols:cancel-outline-rounded" />
                         </button>
-                        <button @click="submitForm"
+                        <button @click="sendPostRequest(formData)"
                             class="py-2 flex items-center gap-2 px-3 bg-slate-500 text-white rounded-md text-lg" type="button">
                             Submit <i class="pi pi-send"></i>
                         </button>

@@ -244,3 +244,11 @@ const visible = ref(false);
         </div>
     </div>
 </template>
+<style>
+.p-dialog-header{
+    --p-dialog-header-padding:.5rem 1rem;
+}
+.p-dialog-close-button{
+    --p-dialog-close-button-padding:.5rem 1rem;
+}
+</style>

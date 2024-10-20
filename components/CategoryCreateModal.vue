@@ -1,9 +1,12 @@
 <script setup>
-const brandName = ref("");
-const description = ref("");
+const brandName = ref('');
+const description = ref('');
 const imageFile = ref(null);
 const imagePreview = ref(null);
 const isDialogVisible = ref(false);
+const categoryType = ref('Parent Category'); // State to handle category type selection
+const parentCategories = ref(['Category 1', 'Category 2', 'Category 3']); // List of parent categories
+const selectedParentCategory = ref(null); // Selected parent category
 
 // Function to handle image file change and preview
 const handleImageUpload = (event) => {
@@ -37,12 +40,14 @@ const preventDefault = (event) => {
 
 // Function to handle the form submission
 const submitForm = () => {
-    console.log("Brand Name:", brandName.value);
-    console.log("Description:", description.value);
-    console.log("Image File:", imageFile.value);
-    // Close the dialog after submission
-    isDialogVisible.value = false;
+    console.log('Brand Name:', brandName.value);
+    console.log('Description:', description.value);
+    console.log('Image File:', imageFile.value);
+    console.log('Category Type:', categoryType.value);
+    console.log('Selected Parent Category:', selectedParentCategory.value);
+    isDialogVisible.value = false; // Close the dialog after submission
 };
+
 const isToggled = ref(false);
 </script>
 
@@ -56,10 +61,28 @@ const isToggled = ref(false);
         </button>
 
         <!-- PrimeVue Dialog Component -->
-        <Dialog :visible="isDialogVisible" @update:visible="isDialogVisible = $event" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" 
-            header="Create Category" :modal="true" :closable="true" :style="{ width: '50vw' }">
+        <Dialog :visible="isDialogVisible" @update:visible="isDialogVisible = $event"
+            :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" header="Create Category" :modal="true" :closable="true"
+            :style="{ width: '50vw' }">
 
             <form @submit.prevent="submitForm">
+                <div class="flex flex-row gap-6">
+                    <!-- Category Type Dropdown -->
+                    <div class="flex flex-col mb-2 gap-1 w-full">
+                        <label for="categoryType">Category Type *</label>
+                        <Dropdown v-model="categoryType" :options="['Parent Category', 'Sub-Category']"
+                            placeholder="Select Category Type"
+                            class="w-full bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded border-slate-400" />
+                    </div>
+
+                    <!-- Parent Category Dropdown (Visible only if Sub-Category is selected) -->
+                    <div class=" w-4/5 flex flex-col mb-2 gap-1">
+                        <label :class="categoryType === 'Parent Category' ? 'text-slate-700':''" for="parentCategory">Select Parent Category *</label>
+                        <AutoComplete :disabled="categoryType === 'Parent Category'" v-model="selectedParentCategory"
+                            :suggestions="parentCategories" placeholder="Search Parent Category"
+                            class="w-full bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded border-slate-400" />
+                    </div>
+                </div>
                 <div class="grid grid-cols-12 gap-6">
                     <div class="col-span-7">
                         <!-- Category Name -->
@@ -68,6 +91,7 @@ const isToggled = ref(false);
                             <input v-model="brandName" type="text" required placeholder="Enter Category Name"
                                 class="bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded border-slate-400" />
                         </div>
+
                         <!-- Small Description -->
                         <div class="flex flex-col mt-2 gap-1">
                             <label for="description">Small Description</label>
@@ -75,6 +99,7 @@ const isToggled = ref(false);
                                 class="h-[105px] bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded border-slate-400"></textarea>
                         </div>
                     </div>
+
                     <!-- Drag and Drop Image Upload and Preview -->
                     <div class="col-span-5 flex flex-col gap-1">
                         <label for="imageUpload">Upload Image</label>
@@ -82,14 +107,12 @@ const isToggled = ref(false);
                             @dragover="preventDefault" @drop="handleDrop" @click="$refs.fileInput.click()">
                             <Icon v-if="!imagePreview" icon="mdi:cloud-upload-outline"
                                 class="w-12 h-12 text-slate-400" />
-                            <p v-if="!imagePreview" class="text-sm text-slate-500">Drag & Drop or Click to Upload
-                            </p>
+                            <p v-if="!imagePreview" class="text-sm text-slate-500">Drag & Drop or Click to Upload</p>
                             <img v-if="imagePreview" :src="imagePreview" alt="Image Preview"
                                 class="w-full h-full object-cover rounded-md border" />
                         </div>
                         <input type="file" ref="fileInput" accept="image/*" @change="handleImageUpload"
                             class="hidden" />
-
                     </div>
                 </div>
             </form>
@@ -107,12 +130,14 @@ const isToggled = ref(false);
                     </div>
                     <div class="flex flex-row gap-4">
                         <button @click="isDialogVisible = false"
-                            class="py-2 px-3 flex items-center gap-2 bg-rose-500 text-white rounded-md text-lg" type="button">
+                            class="py-2 px-3 flex items-center gap-2 bg-rose-500 text-white rounded-md text-lg"
+                            type="button">
                             Cancel
                             <Icon name="material-symbols:cancel-outline-rounded" />
                         </button>
                         <button @click="submitForm"
-                            class="py-2 flex items-center gap-2 px-3 bg-slate-500 text-white rounded-md text-lg" type="button">
+                            class="py-2 flex items-center gap-2 px-3 bg-slate-500 text-white rounded-md text-lg"
+                            type="button">
                             Submit <i class="pi pi-send"></i>
                         </button>
                     </div>
@@ -121,10 +146,11 @@ const isToggled = ref(false);
         </Dialog>
     </div>
 </template>
+
 <style>
 .p-dialog {
     --p-dialog-background: #111827;
     --p-dialog-color: #D1D5DB;
-    --p-dialog-border-color: var(--p-dialog-background)
+    --p-dialog-border-color: var(--p-dialog-background);
 }
 </style>

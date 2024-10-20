@@ -10,5 +10,6 @@ useHead({
         Offers
     </h1>
     <hr class="my-2 border dark:border-gray-700" />
+    <h1>Offer Type Will: Offer Ads + Banner Ads + Notifications Ads + Popup Ads + Coupon</h1>
   </div>
 </template>

@@ -44,7 +44,7 @@ const toggleOpen = () => {
         }"
         :exact-active-class="level === 1 ? 'bg-gray-900 bg-opacity-40 !md:hover:bg-opacity-60 border-b-4 !border-gray-50 !border-opacity-50 !text-[#f0f0f0] font-bold' : 'border-l-2 !border-gray-50 !border-opacity-70 font-bold bg-gray-900 bg-opacity-40 !text-[#f0f0f0]'"
         @click="sidebarStore.mobileOpen = false">
-        <TwFeather v-if="item.icon" :type="item.icon"></TwFeather>
+        <Icon v-if="item.icon" :name="item.icon" class="w-6 h-6"/>
         <div class="md:hidden lg:block select-none whitespace-nowrap overflow-hidden text-ellipsis">
           {{ item.name }}
         </div>
@@ -55,7 +55,7 @@ const toggleOpen = () => {
     <div :data-tooltip-show="type === 'md'" data-tooltip-pos="right" :aria-label="item.name" @click="toggleOpen">
       <div
         class="flex md:justify-center lg:justify-start duration-300 items-center rounded-lg gap-3 cursor-pointer px-5 py-3 md:hover:bg-gray-900 md:hover:bg-opacity-40 border-transparent">
-        <TwFeather v-if="item.icon" :type="item.icon"></TwFeather>
+        <Icon v-if="item.icon" :name="item.icon" class="w-6 h-6"/>
         <div class="md:hidden lg:block select-none whitespace-nowrap overflow-hidden text-ellipsis">
           {{ item.name }}
         </div>
