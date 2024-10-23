@@ -211,7 +211,7 @@ watch(isToggled, (newValue) => {
                         </div>
                     </div>
                     <!--Price & Discount-->
-                    <div class="flex flex-row gap-2">
+                    <div class="grid grid-cols-3 grid-rows-1 gap-2">
                         <div class="w-full flex flex-col gap-1">
                             <label for="price">Price *</label>
                             <input v-model="value" type="text" required placeholder="Enter Price"
@@ -219,6 +219,11 @@ watch(isToggled, (newValue) => {
                         </div>
                         <div class="w-full flex flex-col gap-1">
                             <label for="discount">Discount</label>
+                            <input v-model="value" type="text" required placeholder="Enter Discount"
+                                class=" bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded  border-slate-400" />
+                        </div>
+                        <div class="w-full flex flex-col gap-1">
+                            <label for="discount">In Stock</label>
                             <input v-model="value" type="text" required placeholder="Enter Discount"
                                 class=" bg-opacity-25 bg-transparent outline-none border-[1px] px-3 py-2 rounded  border-slate-400" />
                         </div>

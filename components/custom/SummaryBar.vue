@@ -1,7 +1,7 @@
 <template>
     <div class="col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 w-full">
       <div
-        class="p-2 rounded-lg bg-white dark:bg-gray-800 shadow flex justify-between gap-2 h-full"
+        class="p-4 rounded-lg bg-white dark:bg-gray-800 shadow flex justify-between gap-2 h-full"
       >
         <div class="flex flex-col justify-between">
           <div class="text-gray-500 dark:text-gray-400 font-medium">{{ title }}</div>
@@ -13,7 +13,7 @@
         <div
           class="bg-gradient-to-tl from-gray-600 to-gray-900 rounded-lg px-2 text-white flex items-center justify-center"
         >
-          <Icon :name="icon" class="w-7 h-7" />
+          <Icon :name="icon" class="w-8 h-8" />
         </div>
       </div>
     </div>
@@ -39,7 +39,7 @@
     },
     totalDataCount: {
       type: String,
-      required: true,
+      required: false,
     },
     active: {
       type: Boolean,

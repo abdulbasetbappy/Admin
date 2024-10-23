@@ -12,10 +12,10 @@ useHead({
 
       <custom-summary-bar title="Best Selling" icon="material-symbols:shoppingmode" total="Uniliver"  />
 
-      <custom-summary-bar title="Active " icon="mdi:basket-plus" total="258" :active="true"
+      <custom-summary-bar title="Active " icon="material-symbols:interactive-space-rounded" total="258" :active="true"
       />
 
-      <custom-summary-bar title="Inactive" icon="mdi:basket-remove" total="16" :active="true"
+      <custom-summary-bar title="Inactive" icon="ion:cloud-offline" total="16" :active="true"
          />
     </div>
     <brands-details />

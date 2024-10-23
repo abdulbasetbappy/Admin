@@ -151,12 +151,10 @@ const visible = ref(false);
             <table class="min-w-full bg-transparent  rounded-sm">
                 <thead class="bg-slate-300 dark:bg-slate-700">
                     <tr>
-                        <th class="py-2 px-4">ID</th>
-                        <th class="py-2 px-4">Image</th>
-                        <th class="py-2 px-4">Name</th>
-                        <th class="py-2 px-4 text-left">Category</th>
-                        <th class="py-2 px-4">Price</th>
-                        <th class="py-2 px-4">Stock</th>
+                        <th class="py-2 px-4">SN</th>
+                        <th class="py-2 px-4 text-left">Image</th>
+                        <th class="py-2 px-4 text-left">Name</th>
+                        <th class="py-2 px-4">Products</th>
                         <th class="py-2 px-4">Status</th>
                         <th class="py-2 px-4">Actions</th>
                     </tr>
@@ -170,8 +168,6 @@ const visible = ref(false);
                                 class="rounded-lg object-cover w-[50px] h-[50px]" />
                         </td>
                         <td class="py-2 px-4 text-left">{{ product.name }}</td>
-                        <td class="py-2 px-4 text-left">{{ product.category }}</td>
-                        <td class="py-2 px-4 text-center">${{ product.price.toFixed(2) }}</td>
                         <td class="py-2 px-4 text-center">{{ product.stock }}</td>
                         <td class="py-2 px-4 text-center">{{ product.status || 'Active' }}</td>
                         <td class="py-2 px-4 text-center">

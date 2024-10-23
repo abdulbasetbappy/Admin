@@ -29,14 +29,14 @@ export default [
       {
         isTitle: false,
         name: "Reviews",
-        url: "/Products/Create",
+        url: "/Products/Reviews",
         icon: "line-md:star-twotone-half",
         submenu: [],
       },
       {
         isTitle: false,
         name: "Q&A",
-        url: "/Products/Create",
+        url: "/Products/QuestionsAndAwnsers",
         icon: "line-md:chat-round-dots-twotone",
         submenu: [],
       },
@@ -146,6 +146,28 @@ export default [
     url: "/Inventory",
     icon: "line-md:gauge-loop",
     submenu: [],
+  },
+  {
+    isTitle: false,
+    name: "Blogs",
+    key: "Blogs",
+    icon: "line-md:edit-filled",
+    submenu: [
+      {
+        isTitle: false,
+        name: "Details",
+        url: "/Blogs",
+        icon: "line-md:chat-filled",
+        submenu: [],
+      },
+      {
+        isTitle: false,
+        name: "Write",
+        url: "/Blogs/Write",
+        icon: "line-md:file-plus-filled",
+        submenu: [],
+      },
+    ],
   },
   {
     isTitle: false,
