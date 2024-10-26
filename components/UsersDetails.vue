@@ -128,7 +128,7 @@ const {
         </div>
       </div>
     </div>
-    <!--Table Data Seeting-->
+    <!--Table Data Setting-->
     <div class="overflow-x-auto">
       <table class="min-w-full bg-transparent rounded-sm">
         <!-- Table Header -->

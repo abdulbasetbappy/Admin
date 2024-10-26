@@ -19,11 +19,7 @@ export function useManageUser() {
   const openItemsDropdown = () => {
     itemsDropdownOpen.value = !itemsDropdownOpen.value;
   };
-  //Export Toggle Dropdown
-  const exportDropdownOpen = ref(false);
-  const toggleExportDropdown = () => {
-    exportDropdownOpen.value = !exportDropdownOpen.value;
-  };
+
   // Role Dropdown
   const roleDropdownOpen = ref(null);
   const openRoleDropdown = (id) => {
@@ -37,7 +33,6 @@ export function useManageUser() {
       roleDropdownOpen.value = null;
     }
   };
-
   // Watcher to track changes in the toggle's value
   watch(isToggled, (newValue) => {
     console.log("Toggle value:", newValue);
@@ -127,6 +122,11 @@ export function useManageUser() {
     currentPage.value = page;
   };
 
+  //Export Toggle Dropdown
+  const exportDropdownOpen = ref(false);
+  const toggleExportDropdown = () => {
+    exportDropdownOpen.value = !exportDropdownOpen.value;
+  };
   // Export to CSV
   const exportToCSV = () => {
     if (paginatedProducts.value.length === 0) {
